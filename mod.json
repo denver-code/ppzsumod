@@ -1,0 +1,20 @@
+{
+  "Name": "ZSU",
+  "Author": "D3nVer",
+  "Description": "",
+  "ModVersion": "1.0",
+  "GameVersion": "1.21.2",
+  "ThumbnailPath": "modicon.png",
+  "EntryPoint": "Armor.Mod",
+  "Tags": [
+    "Military"
+  ],
+  "Scripts": [
+    "script.cs",
+    "ArmorBehaviour.cs",
+    "CategoryBuilder.cs"
+  ],
+  "Active": true,
+  "UGCIdentity": null,
+  "CreatorUGCIdentity": "2682310490"
+}
