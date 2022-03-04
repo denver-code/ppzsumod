@@ -32,6 +32,5 @@ public class CategoryBuilder
         }
     }
 
-    //Made in USSR
-    //AZULE
+
 }

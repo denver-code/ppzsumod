@@ -19,29 +19,29 @@ namespace Armor
 CategoryBuilder.Create("YKA", "This mod adds Russian military loadouts (some of them are from COD)", ModAPI.LoadSprite("category icon.png"));       
 
 
- ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Human"), 
-                    NameOverride = "Soldat YK", 
-                    DescriptionOverride = "Hello", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icn/f.png"),
-                    AfterSpawn = (Instance) => 
-                    {
-                        var person = Instance.GetComponent<PersonBehaviour>();
+ // ModAPI.Register(
+ //                new Modification()
+ //                {
+ //                    OriginalItem = ModAPI.FindSpawnable("Human"), 
+ //                    NameOverride = "Soldat YK", 
+ //                    DescriptionOverride = "Hello", 
+ //                    CategoryOverride = ModAPI.FindCategory("YKA"), 
+ //                    ThumbnailOverride = ModAPI.LoadSprite("icn/f.png"),
+ //                    AfterSpawn = (Instance) => 
+ //                    {
+ //                        var person = Instance.GetComponent<PersonBehaviour>();
 
-                        var Head = Instance.transform.Find("Head").gameObject;
+ //                        var Head = Instance.transform.Find("Head").gameObject;
 
-                        Head.GetOrAddComponent<MultipleSpriteHumanBehaviour>().person = person;
-                        Head.GetComponent<MultipleSpriteHumanBehaviour>().Scale = 30;
-                        Head.GetComponent<MultipleSpriteHumanBehaviour>().Textures = new Texture2D[]
-                        {
-                            ModAPI.LoadTexture("Outfit/5.png"),
-                        };
-                    }
-                }
-            );
+ //                        Head.GetOrAddComponent<MultipleSpriteHumanBehaviour>().person = person;
+ //                        Head.GetComponent<MultipleSpriteHumanBehaviour>().Scale = 30;
+ //                        Head.GetComponent<MultipleSpriteHumanBehaviour>().Textures = new Texture2D[]
+ //                        {
+ //                            ModAPI.LoadTexture("Outfit/5.png"),
+ //                        };
+ //                    }
+ //                }
+ //            );
 
   ModAPI.Register(
                 new Modification()
@@ -50,10 +50,43 @@ CategoryBuilder.Create("YKA", "This mod adds Russian military loadouts (some of 
                     NameOverride = "UA Forces solider",
                     DescriptionOverride = "You know things have gotten serious when these guys show up...",
                     CategoryOverride = ModAPI.FindCategory("YKA"),
-                    ThumbnailOverride = ModAPI.LoadSprite("icn/f.png"),
+                    ThumbnailOverride = ModAPI.LoadSprite("icon/solider.png"),
                     AfterSpawn = (Instance) =>
                     {
                         var skin = ModAPI.LoadTexture("Outfit/solider.png");
+                        Instance.GetComponent<PersonBehaviour>().SetBodyTextures(skin);
+                    }
+                }
+            );
+
+  ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "UA TrO Solider",
+                    DescriptionOverride = "You know things have gotten serious when these guys show up...",
+                    CategoryOverride = ModAPI.FindCategory("YKA"),
+                    ThumbnailOverride = ModAPI.LoadSprite("icon/tro.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Outfit/tro.png");
+                        Instance.GetComponent<PersonBehaviour>().SetBodyTextures(skin);
+                    }
+                }
+            );
+
+
+  ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Human"),
+                    NameOverride = "Kyiv Ghost",
+                    DescriptionOverride = "You know things have gotten serious when these guys show up...",
+                    CategoryOverride = ModAPI.FindCategory("YKA"),
+                    ThumbnailOverride = ModAPI.LoadSprite("icon/kghost.png"),
+                    AfterSpawn = (Instance) =>
+                    {
+                        var skin = ModAPI.LoadTexture("Outfit/kghost.png");
                         Instance.GetComponent<PersonBehaviour>().SetBodyTextures(skin);
                     }
                 }
@@ -131,11 +164,12 @@ ModAPI.Register(
 		    }
                 }
             );
+
 ModAPI.Register(
                 new Modification()
                 {
                     OriginalItem = ModAPI.FindSpawnable("Bowling Pin"), 
-                    NameOverride = "Helmet", 
+                    NameOverride = "Basic Helmet", 
                     DescriptionOverride = "", 
                     CategoryOverride = ModAPI.FindCategory("YKA"), 
                     ThumbnailOverride = ModAPI.LoadSprite("icon/6b47.png"), 
@@ -149,6 +183,39 @@ ModAPI.Register(
                         prop.armorPiece = "Head";
                         prop.armorTier = 3;
                         prop.sprite = ModAPI.LoadSprite("Helmet/6b47.png", 3f);
+                        prop.armorPoints = 300;
+                        prop.offset = new Vector2(0f, 2f) * ModAPI.PixelSize;
+                        armor.prop = prop;
+                        armor.SetProperties();
+
+                        if (armor.spawn)
+                        {
+                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+                        }
+                        Instance.FixColliders();
+                    }
+                }
+            );
+
+
+ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Bowling Pin"), 
+                    NameOverride = "ZSU Helem", 
+                    DescriptionOverride = "", 
+                    CategoryOverride = ModAPI.FindCategory("YKA"), 
+                    ThumbnailOverride = ModAPI.LoadSprite("icon/zsuhelem.png"), 
+                    AfterSpawn = (Instance) => 
+                    {   
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Helmet/zsuhelem.png", 3f); 
+                        int PartCount = 1;
+                        Instance.GetOrAddComponent<ArmorBehaviour>();
+                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+                        ArmorProperties prop = new ArmorProperties();
+                        prop.armorPiece = "Head";
+                        prop.armorTier = 3;
+                        prop.sprite = ModAPI.LoadSprite("Helmet/zsuhelem.png", 3f);
                         prop.armorPoints = 300;
                         prop.offset = new Vector2(0f, 2f) * ModAPI.PixelSize;
                         armor.prop = prop;
@@ -219,6 +286,7 @@ ModAPI.Register(
                     }
                 }
             );
+
 
 ModAPI.Register(
                 new Modification()
