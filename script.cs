@@ -230,6 +230,39 @@ ModAPI.Register(
                 }
             );
 
+
+ModAPI.Register(
+                new Modification()
+                {
+                    OriginalItem = ModAPI.FindSpawnable("Bowling Pin"), 
+                    NameOverride = "Ghost Helem", 
+                    DescriptionOverride = "", 
+                    CategoryOverride = ModAPI.FindCategory("YKA"), 
+                    ThumbnailOverride = ModAPI.LoadSprite("icon/ghost.png"), 
+                    AfterSpawn = (Instance) => 
+                    {   
+                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Helmet/ghost.png", 3f); 
+                        int PartCount = 1;
+                        Instance.GetOrAddComponent<ArmorBehaviour>();
+                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+                        ArmorProperties prop = new ArmorProperties();
+                        prop.armorPiece = "Head";
+                        prop.armorTier = 3;
+                        prop.sprite = ModAPI.LoadSprite("Helmet/ghost.png", 3f);
+                        prop.armorPoints = 300;
+                        prop.offset = new Vector2(0f, 2f) * ModAPI.PixelSize;
+                        armor.prop = prop;
+                        armor.SetProperties();
+
+                        if (armor.spawn)
+                        {
+                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+                        }
+                        Instance.FixColliders();
+                    }
+                }
+            );
+
     ModAPI.Register(
                 new Modification()
                 {
@@ -288,1114 +321,1114 @@ ModAPI.Register(
             );
 
 
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 1", 
-                    DescriptionOverride = "Soldat", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Sol.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/Sol.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/Sol.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
- ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 2", 
-                    DescriptionOverride = "St.Soldat", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/H.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/H.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/H.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
- ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 3", 
-                    DescriptionOverride = "Kapral", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Kapral.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/Kapral.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/Kapral.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
- ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 4", 
-                    DescriptionOverride = "Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/S.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/S.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/S.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
- ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 5", 
-                    DescriptionOverride = "St.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/StSer.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/StSer.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/StSer.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 6", 
-                    DescriptionOverride = "Gl.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GS.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GS.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GS.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 7", 
-                    DescriptionOverride = "Shtab.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/SS.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/SS.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/SS.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 8", 
-                    DescriptionOverride = "GlShtab.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GSS.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GSS.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GSS.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 9", 
-                    DescriptionOverride = "Master.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/MS.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/MS.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/MS.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 10", 
-                    DescriptionOverride = "Gl.Master.Serjant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GMS.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GMS.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GMS.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 11", 
-                    DescriptionOverride = "Khorunzhyi", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/H.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/H.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/H.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 12", 
-                    DescriptionOverride = "Leitenant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/L.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/L.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/L.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 13", 
-                    DescriptionOverride = "St.Leitenant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/StL.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/StL.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/StL.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 14", 
-                    DescriptionOverride = "Kapitan", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Kap.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/Kap.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/Kap.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 1", 
+//                     DescriptionOverride = "Soldat", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Sol.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/Sol.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/Sol.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+//  ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 2", 
+//                     DescriptionOverride = "St.Soldat", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/H.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/H.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/H.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+//  ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 3", 
+//                     DescriptionOverride = "Kapral", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Kapral.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/Kapral.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/Kapral.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+//  ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 4", 
+//                     DescriptionOverride = "Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/S.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/S.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/S.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+//  ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 5", 
+//                     DescriptionOverride = "St.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/StSer.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/StSer.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/StSer.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 6", 
+//                     DescriptionOverride = "Gl.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GS.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GS.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GS.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 7", 
+//                     DescriptionOverride = "Shtab.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/SS.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/SS.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/SS.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 8", 
+//                     DescriptionOverride = "GlShtab.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GSS.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GSS.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GSS.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 9", 
+//                     DescriptionOverride = "Master.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/MS.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/MS.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/MS.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 10", 
+//                     DescriptionOverride = "Gl.Master.Serjant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GMS.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GMS.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GMS.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 11", 
+//                     DescriptionOverride = "Khorunzhyi", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/H.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/H.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/H.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 12", 
+//                     DescriptionOverride = "Leitenant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/L.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/L.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/L.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 13", 
+//                     DescriptionOverride = "St.Leitenant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/StL.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/StL.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/StL.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 14", 
+//                     DescriptionOverride = "Kapitan", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/Kap.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/Kap.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/Kap.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
  
 
 
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 15", 
-                    DescriptionOverride = "Maior", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/M.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/M.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/M.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 16", 
-                    DescriptionOverride = "Pod.Polkovnik", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/PP.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/PP.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/PP.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 17", 
-                    DescriptionOverride = "Polkovnil", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/P.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/P.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/P.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 18", 
-                    DescriptionOverride = "General Brigadier", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/BG.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/BG.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/BG.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 19", 
-                    DescriptionOverride = "General Maior", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GM.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GM.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GM.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 20", 
-                    DescriptionOverride = "General Leitenant", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GL.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GL.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GL.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 21", 
-                    DescriptionOverride = "General Polkovnik", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GP.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GP.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GP.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
-
-
-ModAPI.Register(
-                new Modification()
-                {
-                    OriginalItem = ModAPI.FindSpawnable("Rod"), 
-                    NameOverride = "PogonYK 22", 
-                    DescriptionOverride = "General Armii YK", 
-                    CategoryOverride = ModAPI.FindCategory("YKA"), 
-                    ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
-                    AfterSpawn = (Instance) => 
-                    {
-                        Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GAY.png", 15);
-int PartCount = 2;
-
-                        if (!Instance.GetComponent<ArmorBehaviour>())
-                            Instance.AddComponent<ArmorBehaviour>();
-
-                        ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
-                        ArmorProperties prop = new ArmorProperties();
-                        Vector3 offset = new Vector3(0f, 0f);
-                        Vector3 scaleOffset = new Vector3(0f, 0f);
-                        prop.armorPiece = "UpperArm";
-                        prop.armorTier = 3;
-                        prop.sprite = ModAPI.LoadSprite("Armor/GAY.png", 3);
-                        prop.offset = offset;
-                        prop.scaleOffset = scaleOffset;
-                        prop.armorPoints = 350;
-                        armor.prop = prop;
-                        armor.SetProperties();
-
-                        ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
-
-                        armProp[0].sprite = ModAPI.LoadSprite("Armor/GAY.png", 3);
-                        armProp[0].armorPiece = "UpperArmFront";
-                        armProp[0].offset = offset;
-                        armProp[0].armorTier = 2;
-                        armProp[0].scaleOffset = scaleOffset;
-                        armProp[0].armorPoints = 350;
-
-
-                        if (armor.spawn)
-                        {
-                            armor.SetPieces = new ArmorBehaviour[PartCount - 1];
-                            armor.SpawnOtherParts(armProp);
-                        }
-
-                        Instance.FixColliders();
-                    }
-                }
-            );
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 15", 
+//                     DescriptionOverride = "Maior", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/M.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/M.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/M.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 16", 
+//                     DescriptionOverride = "Pod.Polkovnik", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/PP.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/PP.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/PP.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 17", 
+//                     DescriptionOverride = "Polkovnil", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/P.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/P.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/P.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 18", 
+//                     DescriptionOverride = "General Brigadier", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/BG.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/BG.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/BG.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 19", 
+//                     DescriptionOverride = "General Maior", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GM.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GM.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GM.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 20", 
+//                     DescriptionOverride = "General Leitenant", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GL.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GL.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GL.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 21", 
+//                     DescriptionOverride = "General Polkovnik", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GP.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GP.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GP.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
+
+
+// ModAPI.Register(
+//                 new Modification()
+//                 {
+//                     OriginalItem = ModAPI.FindSpawnable("Rod"), 
+//                     NameOverride = "PogonYK 22", 
+//                     DescriptionOverride = "General Armii YK", 
+//                     CategoryOverride = ModAPI.FindCategory("YKA"), 
+//                     ThumbnailOverride = ModAPI.LoadSprite("icon/1.png"), 
+//                     AfterSpawn = (Instance) => 
+//                     {
+//                         Instance.GetComponent<SpriteRenderer>().sprite = ModAPI.LoadSprite("Armor/GAY.png", 15);
+// int PartCount = 2;
+
+//                         if (!Instance.GetComponent<ArmorBehaviour>())
+//                             Instance.AddComponent<ArmorBehaviour>();
+
+//                         ArmorBehaviour armor = Instance.GetComponent<ArmorBehaviour>();
+//                         ArmorProperties prop = new ArmorProperties();
+//                         Vector3 offset = new Vector3(0f, 0f);
+//                         Vector3 scaleOffset = new Vector3(0f, 0f);
+//                         prop.armorPiece = "UpperArm";
+//                         prop.armorTier = 3;
+//                         prop.sprite = ModAPI.LoadSprite("Armor/GAY.png", 3);
+//                         prop.offset = offset;
+//                         prop.scaleOffset = scaleOffset;
+//                         prop.armorPoints = 350;
+//                         armor.prop = prop;
+//                         armor.SetProperties();
+
+//                         ArmorProperties[] armProp = new ArmorProperties[PartCount - 1];
+
+//                         armProp[0].sprite = ModAPI.LoadSprite("Armor/GAY.png", 3);
+//                         armProp[0].armorPiece = "UpperArmFront";
+//                         armProp[0].offset = offset;
+//                         armProp[0].armorTier = 2;
+//                         armProp[0].scaleOffset = scaleOffset;
+//                         armProp[0].armorPoints = 350;
+
+
+//                         if (armor.spawn)
+//                         {
+//                             armor.SetPieces = new ArmorBehaviour[PartCount - 1];
+//                             armor.SpawnOtherParts(armProp);
+//                         }
+
+//                         Instance.FixColliders();
+//                     }
+//                 }
+//             );
 
            }
 
